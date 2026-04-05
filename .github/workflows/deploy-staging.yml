@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -36,3 +37,8 @@ jobs:
     - name: Deploy to S3 Staging
       run: |
         aws s3 sync ./dist/ s3://staging-one-chat/ --delete
+
+    - name: Invalidate CloudFront cache
+      run: |
+        DIST_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?Origins.Items[?contains(DomainName, 'staging-one-chat')]].Id" --output text)
+        aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"

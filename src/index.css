@@ -3,11 +3,7 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: default;
   }
-  button, a, [role="button"] { cursor: pointer !important; }
-  button *, a *, [role="button"] * { cursor: pointer !important; }
-  input, textarea { cursor: text !important; }
 
   html {
     scroll-behavior: smooth;

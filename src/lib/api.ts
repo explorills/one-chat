@@ -11,3 +11,10 @@ export function getLootUrl(): string {
   if (host.startsWith("staging2-all-access")) return "https://api-dev-loot.expl.one";
   return "https://api-loot.expl.one";
 }
+
+export function getNotificationUrl(): string {
+  const host = typeof window !== "undefined" ? window.location.hostname : "";
+  if (host.includes("localhost") || host.includes("127.0.0.1")) return "http://localhost:3080";
+  if (host.startsWith("staging2-all-access")) return "https://api-dev-notification.expl.one";
+  return "https://api-notification.expl.one";
+}

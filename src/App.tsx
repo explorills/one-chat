@@ -1,5 +1,5 @@
 import { EcosystemNavbar, EcosystemFooter, OneIdProvider } from '@explorills/one-ecosystem-ui'
-import { getOneIdApiUrl } from './lib/api'
+import { getOneIdApiUrl, getLootUrl } from './lib/api'
 import { HeroSection } from './components/HeroSection'
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
           projectName="chat"
           themeColor="#dfdfdf"
           currentDomain="chat.expl.one"
+          lootUrl={getLootUrl()}
         />
         <main className="h-full">
           <HeroSection />
